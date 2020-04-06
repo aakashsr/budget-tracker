@@ -6,7 +6,15 @@ var budgetController = (function () {
 // UI CONTROLLER
 
 var UIController = (function () {
-  // some code
+  return {
+    getInput: function () {
+      return {
+        type: document.querySelector(".add__type").value,
+        description: document.querySelector(".add__description").value,
+        value: document.querySelector(".add__value").value,
+      };
+    },
+  };
 })();
 
 // GLOBAL APP CONTROLLER
@@ -14,11 +22,13 @@ var UIController = (function () {
 var controller = (function (budgetCtrl, UICtrl) {
   var ctrlAddItem = function () {
     // 1. Get the field input data
+    var input = UIController.getInput();
+    console.log(input);
     // 2. Add the item to the budget controller
     // 3. Add the item to the UI
     // 4. Calculate the budget
     // 5. Display the budget on the UI
-    console.log("hey aakash , be ready");
+    // console.log("hey aakash , be ready");
   };
 
   document.querySelector(".add__btn").addEventListener("click", ctrlAddItem);
