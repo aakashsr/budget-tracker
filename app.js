@@ -217,6 +217,12 @@ var controller = (function (budgetCtrl, UICtrl) {
   return {
     init: function () {
       console.log("app started");
+      UICtrl.displayBudget({
+        totalInc: 0,
+        totalExp: 0,
+        budget: 0,
+        percentage: 0,
+      });
       setupEventListeners();
     },
   };
