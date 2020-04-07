@@ -63,13 +63,17 @@ var budgetController = (function () {
       data.budget = data.totals.inc - data.totals.exp;
 
       // Calculte percentage
-      data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+      if (data.totals.inc > 0) {
+        data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+      } else {
+        data.percentage = -1;
+      }
     },
 
     getBudget: function (type) {
       return {
-        totalInc: data.total.inc,
-        totalExp: data.total.exp,
+        totalInc: data.totals.inc,
+        totalExp: data.totals.exp,
         budget: data.budget,
         percentage: data.percentage,
       };
@@ -167,6 +171,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     var budget = budgetController.getBudget();
 
     // 3. Display the budget on the UI
+    console.log(budget);
   };
 
   var ctrlAddItem = function () {
