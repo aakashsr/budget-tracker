@@ -66,6 +66,15 @@ var budgetController = (function () {
       data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
     },
 
+    getBudget: function (type) {
+      return {
+        totalInc: data.total.inc,
+        totalExp: data.total.exp,
+        budget: data.budget,
+        percentage: data.percentage,
+      };
+    },
+
     testing: function () {
       console.log(data);
     },
@@ -150,6 +159,16 @@ var controller = (function (budgetCtrl, UICtrl) {
     });
   };
 
+  var updataBudget = function () {
+    // 1. Calculate the budget
+    budgetController.calculateBudget();
+
+    // 2. Return the budget
+    var budget = budgetController.getBudget();
+
+    // 3. Display the budget on the UI
+  };
+
   var ctrlAddItem = function () {
     var input, newItem;
     // 1. Get the field input data
@@ -165,11 +184,11 @@ var controller = (function (budgetCtrl, UICtrl) {
       // 3. Add the item to the UI
       UICtrl.addListItem(newItem, input.type);
 
-      // Clear the fields
+      // 4. Clear the fields
       UICtrl.clearFields();
-      // 4. Calculate the budget
-      // 5. Display the budget on the UI
-      // console.log("hey aakash , be ready");
+
+      // 5. Calculate and update budget
+      updataBudget();
     }
   };
 
