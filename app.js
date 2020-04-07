@@ -159,7 +159,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     });
   };
 
-  var updataBudget = function () {
+  var updateBudget = function () {
     // 1. Calculate the budget
     budgetController.calculateBudget();
 
@@ -188,7 +188,7 @@ var controller = (function (budgetCtrl, UICtrl) {
       UICtrl.clearFields();
 
       // 5. Calculate and update budget
-      updataBudget();
+      updateBudget();
     }
   };
 
