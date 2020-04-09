@@ -227,7 +227,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     if (itemID) {
       splitID = itemID.split("-");
       type = splitID[0];
-      ID = splitID[1];
+      ID = parseInt(splitID[1]);
 
       // 1. Delete the item from the data structure
 
