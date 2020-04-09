@@ -14,5 +14,6 @@
         "statusBar.border": "#b47448",
         "titleBar.border": "#b47448"
     },
-    "peacock.color": "#b47448"
+    "peacock.color": "#b47448",
+    "liveServer.settings.port": 5501
 }
