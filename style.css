@@ -258,6 +258,11 @@ h2 {
     text-align: center;
 }
 
+.item__date {
+    font-size: 12px;
+    opacity: .7;
+}
+
 .income .item__value,
 .income .item__delete--btn {
     color: #28B9B5;
