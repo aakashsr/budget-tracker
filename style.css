@@ -484,7 +484,7 @@ html {
     background: #222;
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (min-device-width: 400px) and (max-device-width: 600px) {
 
     .top {
         height: 40vh;
