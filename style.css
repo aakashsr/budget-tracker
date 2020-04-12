@@ -483,3 +483,47 @@ body {
 html {
     background: #222;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .top {
+        height: 40vh;
+    }
+
+    .bottom {
+        height: 61vh;
+    }
+
+    .budget__title {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .budget__value {
+        font-size: 70px;
+    }
+
+    .budget__income--text,
+    .budget__expenses--text {
+        font-size: 26px;
+    }
+
+    .budget__income--value,
+    .budget__expenses--value {
+        font-size: 32px
+    }
+
+    .income__title,
+    .expenses__title {
+        font-size: 35px;
+    }
+
+    .add__description,
+    .add__value {
+        font-size: 40px;
+    }
+
+    .add__btn {
+        font-size: 50px;
+    }
+}
