@@ -2,6 +2,32 @@
 *** GENERAL
 **********************************************/
 
+/* @import url(//db.onlinewebfonts.com/c/1064f0ad1cb65fdab43bb592ddd8aa91?family=Gilroy-Medium);*/
+
+@font-face {
+    font-family: "bold";
+    src: url("fonts/Gilroy-Bold.woff") format('woff');
+}
+
+@font-face {
+    font-family: "medium";
+    src: url("fonts/Gilroy-Medium.woff") format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "light";
+    src: url("fonts/Gilroy-Light.woff") format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "regular";
+    src: url("fonts/Gilroy-Regular.woff") format('woff');
+    font-style: italic;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +42,7 @@
 
 body {
     color: #555;
-    font-family: Open Sans;
+    font-family: regular;
     font-size: 16px;
     position: relative;
     height: 100vh;
@@ -96,6 +122,7 @@ body {
 
 .budget__income--value,
 .budget__expenses--value {
+    font-family: bold;
     letter-spacing: 1px;
     float: left;
 }
