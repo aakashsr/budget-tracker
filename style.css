@@ -484,7 +484,7 @@ html {
     background: #222;
 }
 
-@media screen and (min-device-width: 400px) and (max-device-width: 600px) {
+@media screen and (min-device-width: 300px) and (max-device-width: 600px) {
 
     .top {
         height: 40vh;
@@ -503,14 +503,19 @@ html {
         font-size: 70px;
     }
 
+    .budget__income,
+    .budget__expenses {
+        width: 210px;
+    }
+
     .budget__income--text,
     .budget__expenses--text {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     .budget__income--value,
     .budget__expenses--value {
-        font-size: 32px
+        font-size: 25px
     }
 
     .income__title,
@@ -520,10 +525,10 @@ html {
 
     .add__description,
     .add__value {
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .add__btn {
-        font-size: 50px;
+        font-size: 40px;
     }
 }
