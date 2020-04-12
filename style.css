@@ -491,7 +491,7 @@ html {
     }
 
     .bottom {
-        height: 61vh;
+        height: 62vh;
     }
 
     .budget__title {
@@ -530,5 +530,18 @@ html {
 
     .add__btn {
         font-size: 40px;
+    }
+
+    .container {
+        padding: 5%;
+    }
+
+    .income {
+        width: 45%;
+        margin-right: 5%;
+    }
+
+    .expenses {
+        width: 45%;
     }
 }
