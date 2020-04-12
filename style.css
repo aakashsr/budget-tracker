@@ -2,7 +2,6 @@
 *** GENERAL
 **********************************************/
 
-/* @import url(//db.onlinewebfonts.com/c/1064f0ad1cb65fdab43bb592ddd8aa91?family=Gilroy-Medium);*/
 
 @font-face {
     font-family: "bold";
@@ -351,4 +350,136 @@ h2 {
 
 .unpaid:hover .item__description {
     font-weight: 900;
+}
+
+
+/* Overrided css styles */
+
+.budget__income,
+.budget__expenses {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    width: 190px;
+    background: none;
+}
+
+.budget__value {
+    font-family: bold;
+}
+
+
+.top {
+    /* background-color: #3a3c71; */
+    /* background: #1B2454; */
+    /* background: #241331; */
+    /* background: #34006a; */
+    background-image: linear-gradient(to right, rgb(52, 0, 106, 0.95), rgba(36, 19, 49, 0.9)),
+        url('/10-and-20-euro-bill-3806749.jpg');
+    background-size: cover;
+    background-position: bottom;
+    height: 45vh;
+    /* background-color: rgb(36, 19, 49); */
+}
+
+.budget__income--text,
+.budget__income--value,
+.right {
+    float: none;
+}
+
+.budget__income {
+    float: left;
+}
+
+.budget__expenses {
+    float: right;
+}
+
+.budget {
+    width: 600px;
+}
+
+.budget__income--percentage {
+    display: none;
+}
+
+
+.budget__income--value,
+.budget__expenses--value {
+    font-size: 20px;
+}
+
+.budget__expenses--text,
+.budget__income--text {
+    font-family: medium;
+    color: #666;
+}
+
+.right {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+.add {
+    background: #F1F3F4;
+    padding: 20px;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bottom {
+    min-height: 57vh;
+    width: 100%;
+    border-radius: 30px 30px 0 0;
+    overflow: hidden;
+    margin-top: 0px;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    margin-top: -20px;
+}
+
+.income__title {
+    color: #28B9B5;
+}
+
+.income__title,
+.expenses__title {
+    font-family: medium;
+    font-size: 20px;
+    text-align: center;
+}
+
+.add__description,
+.add__value {
+    font-size: 15px;
+}
+
+.budget__income--text,
+.budget__expenses--text {
+    font-size: 14px;
+}
+
+.budget__title--month {
+    font-family: bold;
+}
+
+.item__content {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.item__date {
+    font-size: 14px;
+}
+
+
+html {
+    background: #222;
 }

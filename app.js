@@ -389,7 +389,8 @@ var controller = (function (budgetCtrl, UICtrl) {
   var ctrlDeleteItem = function (event) {
     var itemID, splitID, type, ID;
 
-    itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+    itemID =
+      event.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
     console.log(itemID);
 
     if (itemID) {
