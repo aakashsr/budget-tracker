@@ -376,7 +376,7 @@ h2 {
     /* background: #241331; */
     /* background: #34006a; */
     background-image: linear-gradient(to right, rgb(52, 0, 106, 0.95), rgba(36, 19, 49, 0.9)),
-        url('/background.jpg');
+        url('/backgroundop.jpg');
     background-size: cover;
     background-position: bottom;
     height: 45vh;
