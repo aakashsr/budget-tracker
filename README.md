@@ -2,5 +2,9 @@
 
 #### A simple budget tracker to keep track of your incoming and outgoing expenses per month.This has been made using Vanilla JavaScript
 
-![](/ezgif.com-optimize.gifg)
+## Demo
+
+<div align='center'>
+	<img src='demo.gif' />
+</div>
  
