@@ -48,10 +48,6 @@ body {
     font-weight: 400;
 }
 
-.right {
-    float: right;
-}
-
 .red {
     color: #FF5049 !important;
 }
@@ -65,19 +61,15 @@ body {
 **********************************************/
 
 .top {
-    height: 40vh;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png); */
+    background: linear-gradient(to right, rgb(0, 0, 0, .9), rgba(36, 19, 49, 0.9)),
+        url('backgroundop.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
+    height: 45vh;
     position: relative;
 }
 
 .budget {
-    position: absolute;
-    width: 350px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: #fff;
 }
 
@@ -96,26 +88,8 @@ body {
     letter-spacing: 2px;
 }
 
-.budget__income,
-.budget__expenses {
-    padding: 12px;
-    text-transform: uppercase;
-}
-
-.budget__income {
-    margin-bottom: 10px;
-    background-color: #28B9B5;
-}
-
-.budget__expenses {
-    background-color: #FF5049;
-}
-
 .budget__income--text,
 .budget__expenses--text {
-    float: left;
-    font-size: 13px;
-    color: #444;
     margin-top: 2px;
 }
 
@@ -220,19 +194,18 @@ body {
 
 /***** LISTS *****/
 .container {
-    width: 1000px;
+    width: 1200px;
     margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .income {
-    float: left;
-    width: 475px;
-    margin-right: 50px;
+    flex-basis: 45%;
 }
 
 .expenses {
-    float: left;
-    width: 475px;
+    flex-basis: 45%;
 }
 
 h2 {
@@ -359,68 +332,31 @@ h2 {
 .budget__expenses {
     display: flex;
     flex-direction: column;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    width: 190px;
-    background: none;
 }
 
 .budget__value {
     font-family: bold;
 }
 
-
-.top {
-    /* background-color: #3a3c71; */
-    /* background: #1B2454; */
-    /* background: #241331; */
-    /* background: #34006a; */
-    background-image: linear-gradient(to right, rgb(52, 0, 106, 0.95), rgba(36, 19, 49, 0.9)),
-        url('backgroundop.jpg');
-    background-size: cover;
-    background-position: bottom;
-    height: 45vh;
-    /* background-color: rgb(36, 19, 49); */
-}
-
-.budget__income--text,
-.budget__income--value,
-.right {
-    float: none;
-}
-
-.budget__income {
-    float: left;
-}
-
-.budget__expenses {
-    float: right;
-}
-
-.budget {
-    width: 600px;
-}
-
 .budget__income--percentage {
     display: none;
 }
 
-
 .budget__income--value,
 .budget__expenses--value {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .budget__expenses--text,
 .budget__income--text {
     font-family: medium;
-    color: #666;
 }
 
 .right {
-    float: right;
     display: flex;
     align-items: center;
+    color: #fff;
+    float: right;
 }
 
 .add {
@@ -428,15 +364,9 @@ h2 {
     padding: 20px;
 }
 
-body {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .bottom {
     min-height: 57vh;
     width: 100%;
-    border-radius: 30px 30px 0 0;
     overflow: hidden;
     margin-top: 0px;
     background: #fff;
@@ -464,6 +394,9 @@ body {
 .budget__income--text,
 .budget__expenses--text {
     font-size: 14px;
+    color: #777;
+    letter-spacing: 1px;
+
 }
 
 .budget__title--month {
@@ -480,9 +413,70 @@ body {
 }
 
 
-html {
-    background: #222;
+.top {
+    display: flex;
+    flex-direction: column;
 }
+
+.top__main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 45px;
+}
+
+.budget__value {
+    margin-bottom: 0;
+}
+
+.budget__income--value,
+.budget__expenses--value {
+    color: #fff;
+}
+
+.budget__data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.top__data {
+    position: absolute;
+    width: 75%;
+    margin: 0 auto;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.top {
+    height: 47vh;
+}
+
+.bottom {
+    min-height: 46vh;
+    height: 56vh;
+}
+
+.budget__income,
+.budget__expenses {
+    padding-top: 0;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    width: 190px;
+    background: none;
+    padding: 12px;
+    height: 80px;
+}
+
+.item__description,
+.item__value {
+    font-family: medium;
+}
+
 
 @media screen and (min-device-width: 300px) and (max-device-width: 600px) {
 
@@ -490,8 +484,13 @@ html {
         height: 40vh;
     }
 
+    .top__main {
+        padding-top: 110px;
+    }
+
     .bottom {
         height: 62vh;
+        border-radius: 30px 30px 0 0;
     }
 
     .budget__title {
