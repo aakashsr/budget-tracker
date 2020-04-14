@@ -83,6 +83,9 @@ var budgetController = (function () {
       } else {
         data.percentage = -1;
       }
+
+      // update chart
+      updateChart(data.totals.inc, data.totals.exp);
     },
     calculatePercentages: function () {
       data.allItems.exp.forEach(function (cur) {
@@ -105,6 +108,9 @@ var budgetController = (function () {
       if (index !== -1) {
         data.allItems[type].splice(index, 1);
       }
+
+      // update chart
+      updateChart(data.totals.inc, data.totals.exp);
     },
 
     getBudget: function (type) {
@@ -430,3 +436,50 @@ var controller = (function (budgetCtrl, UICtrl) {
 })(budgetController, UIController);
 
 controller.init();
+
+var chart = document.querySelector(".chart");
+
+// Crating canvas element
+
+const canvas = document.createElement("canvas");
+
+canvas.width = 150;
+canvas.height = 150;
+
+// Append canvas to chart element
+
+chart.appendChild(canvas);
+
+// to draw our canvas ,we need to get context of canvas
+const ctx = canvas.getContext("2d");
+
+// change line width
+
+ctx.lineWidth = 16;
+
+// circle radius
+
+const R = 60;
+
+function drawCircle(color, ratio, anticlockwise) {
+  ctx.strokeStyle = color;
+  ctx.beginPath();
+  ctx.arc(
+    canvas.width / 2,
+    canvas.height / 2,
+    R,
+    0,
+    ratio * 2 * Math.PI,
+    anticlockwise
+  );
+  ctx.stroke();
+}
+
+function updateChart(income, expense) {
+  let ratio = income / (income + expense);
+
+  drawCircle("#28B9B5", -ratio, true);
+  drawCircle("#e66767", 1 - ratio, false);
+}
+
+updateChart(0, 0);
