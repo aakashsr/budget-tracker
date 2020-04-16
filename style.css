@@ -533,14 +533,16 @@ h2 {
 
     .container {
         padding: 5%;
+        width: auto;
+        justify-content: center;
     }
 
     .income {
-        width: 45%;
+        flex-basis: 45%;
         margin-right: 5%;
     }
 
     .expenses {
-        width: 45%;
+        flex-basis: 45%;
     }
 }
