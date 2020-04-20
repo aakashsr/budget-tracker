@@ -263,7 +263,8 @@ h2 {
 }
 
 .income .item__value,
-.income .item__delete--btn {
+.income .item__delete--btn,
+.income .item__edit--btn {
     color: #28B9B5;
 }
 
@@ -276,9 +277,11 @@ h2 {
 
 .item__delete {
     float: left;
+    padding: 0 10px;
 }
 
-.item__delete--btn {
+.item__delete--btn,
+.item__edit--btn {
     font-size: 22px;
     background: none;
     border: none;
@@ -289,17 +292,22 @@ h2 {
     display: none;
 }
 
-.item__delete--btn:focus {
+.item__delete--btn:focus,
+.item__edit--btn:focus {
     outline: none;
 }
 
-.item__delete--btn:active {
+.item__delete--btn:active,
+.item__edit--btn:active {
     transform: translateY(2px);
 }
 
-.item:hover .item__delete--btn {
+
+.item:hover .item__delete--btn,
+.item:hover .item__edit--btn {
     display: block;
 }
+
 
 .item:hover .item__value {
     transform: translateX(-20px);
@@ -545,4 +553,38 @@ h2 {
     .expenses {
         flex-basis: 45%;
     }
+}
+
+.income .item__delete--btn,
+.expenses .item__delete--btn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-size: cover;
+}
+
+.income .item__delete--btn {
+    background-image: url('./close-circle-outline.svg');
+}
+
+
+.expenses .item__delete--btn {
+    background-image: url('./close-circle-outline-expense.svg');
+}
+
+.income .item__edit--btn,
+.expenses .item__edit--btn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-size: cover;
+}
+
+.income .item__edit--btn {
+    background-image: url('./outline.svg');
+}
+
+
+.expenses .item__edit--btn {
+    background-image: url('./outline-expense.svg');
 }
