@@ -393,11 +393,35 @@ var controller = (function (budgetCtrl, UICtrl) {
   };
 
   var ctrlDeleteItem = function (event) {
-    var itemID, splitID, type, ID;
+    var itemID, splitID, type, ID, input, targetBtn;
 
-    itemID =
-      event.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
-    console.log(itemID);
+    // Getting input
+    input = UIController.getInput();
+
+    // Figuring out the button
+    targetBtn = event.target;
+
+    // Handling edit
+    if (targetBtn.className === "item__edit--btn") {
+      let desc,
+        value,
+        inputDesc,
+        inputVal,
+        valueString,
+        splitValuesString,
+        intValue;
+      desc = event.target.parentNode.parentNode.previousElementSibling;
+      value = event.target.parentNode.parentNode.firstElementChild;
+      inputDesc = document.querySelector(".add__description");
+      inputVal = document.querySelector(".add__value");
+      inputDesc.value = desc.textContent;
+      valueString = value.textContent;
+      splitValuesString = valueString.split(",");
+      intValue = parseInt(splitValuesString[0] + splitValuesString[1]);
+      inputVal.value = Math.abs(intValue);
+    }
+
+    itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
     if (itemID) {
       splitID = itemID.split("-");
