@@ -341,7 +341,7 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     document
       .querySelector(DOM.container)
-      .addEventListener("click", ctrlDeleteItem);
+      .addEventListener("click", ctrlEditOrDeleteItem);
   };
 
   var updateBudget = function () {
@@ -392,7 +392,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     }
   };
 
-  var ctrlDeleteItem = function (event) {
+  var ctrlEditOrDeleteItem = function (event) {
     var itemID, splitID, type, ID, input, targetBtn;
 
     // Getting input
