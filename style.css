@@ -567,12 +567,13 @@ h2 {
 }
 
 .income .item__delete--btn {
-    background-image: url('./close-circle-outline.svg');
+    /* background-image: url('./close-circle-outline.svg'); */
+    background-image: url('./trash-outline.svg');
 }
 
 
 .expenses .item__delete--btn {
-    background-image: url('./close-circle-outline-expense.svg');
+    background-image: url('./trash-outline-expense.svg');
 }
 
 .income .item__edit--btn,
