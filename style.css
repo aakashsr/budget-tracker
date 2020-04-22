@@ -61,9 +61,12 @@ body {
 **********************************************/
 
 .top {
-    background: linear-gradient(to right, rgb(0, 0, 0, .9), rgba(36, 19, 49, 0.9)),
-        url('backgroundop.jpg');
-    background-size: cover;
+    /* background: linear-gradient(to right, rgb(0, 0, 0, .9), rgba(36, 19, 49, 0.9)),
+        url('/bgimage.png'); */
+    background: linear-gradient(rgba(0, 0, 0, .99), rgba(0, 0, 0, .99)),
+        url(/bgimage.png);
+    background-blend-mode: soft-light;
+    background-size: contain;
     background-position: bottom;
     height: 45vh;
     position: relative;
@@ -402,7 +405,7 @@ h2 {
 .budget__income--text,
 .budget__expenses--text {
     font-size: 14px;
-    color: #777;
+    color: #888;
     letter-spacing: 1px;
 
 }
