@@ -61,15 +61,20 @@ body {
 **********************************************/
 
 .top {
-    /* background: linear-gradient(to right, rgb(0, 0, 0, .9), rgba(36, 19, 49, 0.9)),
-        url('/bgimage.png'); */
-    background: linear-gradient(rgba(0, 0, 0, .99), rgba(0, 0, 0, .99)),
-        url(/bgimage.png);
+    background: linear-gradient(rgba(0, 0, 0, .99), rgba(0, 0, 0, .99)), url(/bgimage.png);
     background-blend-mode: soft-light;
     background-size: contain;
     background-position: bottom;
-    height: 45vh;
     position: relative;
+    flex-basis: 35%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 60vh;
+    box-shadow: 0px 0px 10px #ddd,
+        0 0px 60px #ccc;
 }
 
 .budget {
@@ -118,20 +123,24 @@ body {
     border-radius: 3px;
 }
 
-
 /**********************************************
 *** BOTTOM PART
 **********************************************/
 
 /***** FORM *****/
 .add {
-    padding: 14px;
+    padding: 20px;
+    flex-basis: 20%;
+    display: flex;
+    align-items: center;
     border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
+    background-color: #fff;
 }
 
 .add__container {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -142,7 +151,6 @@ body {
     font-size: 18px;
     color: inherit;
     background-color: #fff;
-    margin-right: 10px;
     font-weight: 300;
     transition: border 0.3s;
 }
@@ -153,22 +161,22 @@ body {
     background-color: #fff;
     color: inherit;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
     padding: 12px 15px;
-    margin-right: 10px;
     border-radius: 5px;
     transition: border 0.3s;
 }
 
 .add__description {
-    width: 400px;
+    width: 45%;
 }
 
 .add__value {
-    width: 100px;
+    width: 20%;
 }
 
 .add__btn {
+    width: 10%;
     font-size: 35px;
     background: none;
     border: none;
@@ -177,7 +185,6 @@ body {
     display: inline-block;
     vertical-align: middle;
     line-height: 1.1;
-    margin-left: 10px;
 }
 
 .add__btn:active {
@@ -196,12 +203,6 @@ body {
 }
 
 /***** LISTS *****/
-.container {
-    width: 1200px;
-    margin: 60px auto;
-    display: flex;
-    justify-content: space-between;
-}
 
 .income {
     flex-basis: 45%;
@@ -266,8 +267,7 @@ h2 {
 }
 
 .income .item__value,
-.income .item__delete--btn,
-.income .item__edit--btn {
+.income .item__delete--btn {
     color: #28B9B5;
 }
 
@@ -280,7 +280,6 @@ h2 {
 
 .item__delete {
     float: left;
-    padding: 0 10px;
 }
 
 .item__delete--btn,
@@ -305,12 +304,10 @@ h2 {
     transform: translateY(2px);
 }
 
-
 .item:hover .item__delete--btn,
 .item:hover .item__edit--btn {
     display: block;
 }
-
 
 .item:hover .item__value {
     transform: translateX(-20px);
@@ -335,7 +332,6 @@ h2 {
 .unpaid:hover .item__description {
     font-weight: 900;
 }
-
 
 /* Overrided css styles */
 
@@ -370,11 +366,6 @@ h2 {
     float: right;
 }
 
-.add {
-    background: #F1F3F4;
-    padding: 20px;
-}
-
 .bottom {
     min-height: 57vh;
     width: 100%;
@@ -397,17 +388,11 @@ h2 {
     text-align: center;
 }
 
-.add__description,
-.add__value {
-    font-size: 15px;
-}
-
 .budget__income--text,
 .budget__expenses--text {
     font-size: 14px;
-    color: #888;
+    color: #777;
     letter-spacing: 1px;
-
 }
 
 .budget__title--month {
@@ -423,13 +408,8 @@ h2 {
     font-size: 14px;
 }
 
-
-.top {
-    display: flex;
-    flex-direction: column;
-}
-
 .top__main {
+    flex-basis: 45%;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -452,19 +432,6 @@ h2 {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-}
-
-.top__data {
-    position: absolute;
-    width: 75%;
-    margin: 0 auto;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.top {
-    height: 47vh;
 }
 
 .bottom {
@@ -558,24 +525,27 @@ h2 {
     }
 }
 
+/* new styles */
+
+.top__data {
+    flex-basis: 25%;
+}
+
+.budget__container {
+    display: flex;
+    align-items: unset;
+    max-width: 1500px;
+    margin: 0 auto;
+    justify-content: space-around;
+    padding: 25px 0;
+}
+
+.container {
+    flex-basis: 30%;
+}
+
 .income .item__delete--btn,
-.expenses .item__delete--btn {
-    width: 25px;
-    height: 25px;
-    border: none;
-    background-size: cover;
-}
-
-.income .item__delete--btn {
-    /* background-image: url('./close-circle-outline.svg'); */
-    background-image: url('./trash-outline.svg');
-}
-
-
-.expenses .item__delete--btn {
-    background-image: url('./trash-outline-expense.svg');
-}
-
+.expenses .item__delete--btn,
 .income .item__edit--btn,
 .expenses .item__edit--btn {
     width: 25px;
@@ -584,11 +554,36 @@ h2 {
     background-size: cover;
 }
 
+
+.item__delete--btn,
+.item__edit--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+}
+
+.income .item__delete--btn {
+    background-image: url('./trash-outline.svg');
+}
+
+.expenses .item__delete--btn {
+    background-image: url('./trash-outline-expense.svg');
+}
+
 .income .item__edit--btn {
     background-image: url('./outline.svg');
 }
 
-
 .expenses .item__edit--btn {
     background-image: url('./outline-expense.svg');
+}
+
+.item:hover .item__delete--btn,
+.item:hover .item__edit--btn {
+    display: block;
 }

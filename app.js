@@ -35,6 +35,16 @@ var budgetController = (function () {
     percentage: -1,
   };
 
+  // localStorage.clear();
+
+  // Saving data in local storage
+  function setData(budget, income, expense, percentage) {
+    localStorage.setItem("budget", data.budget);
+    localStorage.setItem("income", data.totals.inc);
+    localStorage.setItem("expenses", data.totals.exp);
+    localStorage.setItem("percentage", data.percentage);
+  }
+
   var calculateTotal = function (type) {
     var sum = 0;
     data.allItems[type].forEach(function (cur) {
@@ -83,6 +93,9 @@ var budgetController = (function () {
       } else {
         data.percentage = -1;
       }
+
+      // Set local storage
+      setData(data.budget, data.totals.inc, data.totals.exp, data.percentage);
 
       // update chart
       updateChart(data.totals.inc, data.totals.exp);
@@ -145,6 +158,15 @@ var UIController = (function () {
     container: ".container",
     dateLabel: ".budget__title--month",
   };
+
+  // Saving items in local storage too
+  function setItems(type, html) {
+    if (type === "inc") {
+      localStorage.setItem("item", html);
+    } else if (type === "exp") {
+      localStorage.setItem("item", html);
+    }
+  }
 
   var formatNumber = function (num, type) {
     // + or - before the number
@@ -220,10 +242,25 @@ var UIController = (function () {
       var newHtml = html.replace("%id%", obj.id);
       newHtml = newHtml.replace("%description%", obj.description);
       newHtml = newHtml.replace("%value%", formatNumber(obj.value, type));
+
       newHtml = newHtml.replace("%date%", today);
 
+      // setItems("inc", newHtml);
+
       // Insert the HTML into the DOM
-      document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
+      var parentElement = document.querySelector(element);
+
+      // var newItem = localStorage.getItem("item");
+
+      if (localStorage.getItem("item")) {
+        parentElement.innerHTML = localStorage.getItem("item");
+      }
+
+      parentElement.insertAdjacentHTML("beforeend", newHtml);
+      localStorage.setItem("item", parentElement.innerHTML);
+      // console.log("html setter in localstorage");
+
+      // parentElement.insertAdjacentHTML("beforeend", newHtml);
     },
     deleteListItem: function (selectorID) {
       var el = document.getElementById(selectorID);
@@ -250,19 +287,19 @@ var UIController = (function () {
       var type;
       obj.budget > 0 ? (type = "inc") : (type = "exp");
       document.querySelector(DOMStrings.budgetLabel).textContent = formatNumber(
-        obj.budget,
+        localStorage.getItem("budget"),
         type
       );
       document.querySelector(DOMStrings.incomeLabel).textContent = formatNumber(
-        obj.totalInc,
+        localStorage.getItem("income"),
         "inc"
       );
       document.querySelector(
         DOMStrings.expensesLabel
-      ).textContent = formatNumber(obj.totalExp, "exp");
-      if (obj.percentage > 0) {
+      ).textContent = formatNumber(localStorage.getItem("expenses"), "exp");
+      if (localStorage.getItem("percentage") > 0) {
         document.querySelector(DOMStrings.percentageLabel).textContent =
-          obj.percentage + "%";
+          localStorage.getItem("percentage") + "%";
       } else {
         document.querySelector(DOMStrings.percentageLabel).textContent = "---";
       }
