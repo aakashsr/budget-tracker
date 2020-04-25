@@ -18,9 +18,12 @@ var budgetController = (function () {
   Expense.prototype.getPercentage = function () {
     return this.percentage;
   };
+
   var Income = function (id, description, value) {
     (this.id = id), (this.description = description), (this.value = value);
   };
+
+  // localStorage.clear();
 
   var data = {
     allItems: {
@@ -34,16 +37,6 @@ var budgetController = (function () {
     budget: 0,
     percentage: -1,
   };
-
-  localStorage.clear();
-
-  // Saving data in local storage
-  function setData(budget, income, expense, percentage) {
-    localStorage.setItem("budget", data.budget);
-    localStorage.setItem("income", data.totals.inc);
-    localStorage.setItem("expenses", data.totals.exp);
-    localStorage.setItem("percentage", data.percentage);
-  }
 
   var calculateTotal = function (type) {
     var sum = 0;
@@ -94,9 +87,6 @@ var budgetController = (function () {
         data.percentage = -1;
       }
 
-      // Set local storage
-      setData(data.budget, data.totals.inc, data.totals.exp, data.percentage);
-
       // update chart
       updateChart(data.totals.inc, data.totals.exp);
     },
@@ -120,6 +110,7 @@ var budgetController = (function () {
       var index = ids.indexOf(ID);
       if (index !== -1) {
         data.allItems[type].splice(index, 1);
+        console.log("deleted");
       }
 
       // update chart
@@ -133,6 +124,25 @@ var budgetController = (function () {
         budget: data.budget,
         percentage: data.percentage,
       };
+    },
+
+    // Setting data into local storage
+    storeData: function () {
+      localStorage.setItem("data", JSON.stringify(data));
+      console.log("i'm store data");
+    },
+
+    // Getting data from local storage
+    getStoredData: function () {
+      var localData = JSON.parse(localStorage.getItem("data"));
+      return localData;
+    },
+
+    // Updating data structure from stored data
+    updateData: function (storedData) {
+      data.totals = storedData.totals;
+      data.budget = storedData.budget;
+      data.percentage = storedData.percentage;
     },
 
     testing: function () {
@@ -158,15 +168,6 @@ var UIController = (function () {
     container: ".container",
     dateLabel: ".budget__title--month",
   };
-
-  // Saving items in local storage too
-  function setItems(type, html) {
-    if (type === "inc") {
-      localStorage.setItem("item", html);
-    } else if (type === "exp") {
-      localStorage.setItem("item", html);
-    }
-  }
 
   var formatNumber = function (num, type) {
     // + or - before the number
@@ -245,22 +246,8 @@ var UIController = (function () {
 
       newHtml = newHtml.replace("%date%", today);
 
-      // setItems("inc", newHtml);
-
       // Insert the HTML into the DOM
-      var parentElement = document.querySelector(element);
-
-      // var newItem = localStorage.getItem("item");
-
-      if (localStorage.getItem("item")) {
-        parentElement.innerHTML = localStorage.getItem("item");
-      }
-
-      parentElement.insertAdjacentHTML("beforeend", newHtml);
-      localStorage.setItem("item", parentElement.innerHTML);
-      // console.log("html setter in localstorage");
-
-      // parentElement.insertAdjacentHTML("beforeend", newHtml);
+      document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
     },
     deleteListItem: function (selectorID) {
       var el = document.getElementById(selectorID);
@@ -287,19 +274,19 @@ var UIController = (function () {
       var type;
       obj.budget > 0 ? (type = "inc") : (type = "exp");
       document.querySelector(DOMStrings.budgetLabel).textContent = formatNumber(
-        localStorage.getItem("budget"),
+        obj.budget,
         type
       );
       document.querySelector(DOMStrings.incomeLabel).textContent = formatNumber(
-        localStorage.getItem("income"),
+        obj.totalInc,
         "inc"
       );
       document.querySelector(
         DOMStrings.expensesLabel
-      ).textContent = formatNumber(localStorage.getItem("expenses"), "exp");
-      if (localStorage.getItem("percentage") > 0) {
+      ).textContent = formatNumber(obj.totalExp, "exp");
+      if (obj.percentage > 0) {
         document.querySelector(DOMStrings.percentageLabel).textContent =
-          localStorage.getItem("percentage") + "%";
+          obj.percentage + "%";
       } else {
         document.querySelector(DOMStrings.percentageLabel).textContent = "---";
       }
@@ -377,8 +364,38 @@ var controller = (function (budgetCtrl, UICtrl) {
       .addEventListener("change", UICtrl.changeType);
 
     document
-      .querySelector(DOM.container)
+      .querySelector(".budget__container")
       .addEventListener("click", ctrlEditOrDeleteItem);
+  };
+
+  var loadData = function () {
+    // 1. Loca data from local storage
+    var storedData = budgetCtrl.getStoredData();
+    console.log(storedData);
+
+    if (storedData) {
+      // 2. insert the saved data into local storage
+      budgetCtrl.updateData(storedData);
+
+      // 3. create income items
+      storedData.allItems.inc.forEach(function (cur) {
+        var newIncItem = budgetCtrl.addItem("inc", cur.description, cur.value);
+        UICtrl.addListItem(newIncItem, "inc");
+      });
+
+      // 4. Creating  expense items
+      storedData.allItems.exp.forEach(function (cur) {
+        var newExpItem = budgetCtrl.addItem("exp", cur.description, cur.value);
+        UICtrl.addListItem(newExpItem, "exp");
+      });
+
+      // 5. Display the budget
+      budget = budgetCtrl.getBudget();
+      UICtrl.displayBudget(budget);
+
+      // Display the percentage
+      updatePercentages();
+    }
   };
 
   var updateBudget = function () {
@@ -390,6 +407,7 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     // 3. Display the budget on the UI
     UICtrl.displayBudget(budget);
+    console.log("i'm update budget");
   };
 
   var updatePercentages = function () {
@@ -401,6 +419,7 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     // 3. Update the ui with the new percentages.
     UICtrl.displayPercentage(percentages);
+    console.log("i'm updateper");
   };
 
   var ctrlAddItem = function () {
@@ -426,6 +445,9 @@ var controller = (function (budgetCtrl, UICtrl) {
 
       // 6. calculate and update percentages
       updatePercentages();
+
+      // 7. save to localstorage
+      budgetCtrl.storeData();
     }
   };
 
@@ -459,6 +481,7 @@ var controller = (function (budgetCtrl, UICtrl) {
     }
 
     itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+    console.log(itemID);
 
     if (itemID) {
       splitID = itemID.split("-");
@@ -478,6 +501,9 @@ var controller = (function (budgetCtrl, UICtrl) {
 
       // 4. calculate and update percentages
       updatePercentages();
+
+      // 5. save to localstorage
+      budgetCtrl.storeData();
     }
   };
 
@@ -492,6 +518,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         percentage: 0,
       });
       setupEventListeners();
+      loadData();
     },
   };
 })(budgetController, UIController);
