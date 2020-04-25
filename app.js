@@ -35,7 +35,7 @@ var budgetController = (function () {
     percentage: -1,
   };
 
-  // localStorage.clear();
+  localStorage.clear();
 
   // Saving data in local storage
   function setData(budget, income, expense, percentage) {

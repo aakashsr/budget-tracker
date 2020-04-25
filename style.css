@@ -46,6 +46,7 @@ body {
     position: relative;
     height: 100vh;
     font-weight: 400;
+    background: #f7f7f7;
 }
 
 .red {
@@ -67,14 +68,14 @@ body {
     background-position: bottom;
     position: relative;
     flex-basis: 35%;
-    border-radius: 50px;
+    border-radius: 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
     height: 75vh;
-    box-shadow: 0px 0px 10px #ddd,
-        0 0px 60px #ccc;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .budget {
@@ -133,8 +134,9 @@ body {
     flex-basis: 20%;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: -1px;
     background-color: #fff;
+    border-radius: 25px;
 }
 
 .add__container {
@@ -228,16 +230,21 @@ h2 {
 }
 
 .item {
-    padding: 13px;
-    border-bottom: 1px solid #e7e7e7;
+    padding: 15px;
+    /* border-bottom: 1px solid #e7e7e7; */
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.01),
+        0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .item:first-child {
-    border-top: 1px solid #e7e7e7;
+    /* border-top: 1px solid #e7e7e7; */
 }
 
 .item:nth-child(even) {
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
 }
 
 .item__description {
@@ -591,4 +598,15 @@ h2 {
 .item:hover .item__delete--btn,
 .item:hover .item__edit--btn {
     display: block;
+}
+
+.top__design {
+    width: 45%;
+    height: 18px;
+    border-radius: 2px 2px 30px 30px;
+    left: 50%;
+    background: #f7f7f7;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
 }
