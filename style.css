@@ -72,7 +72,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    height: 60vh;
+    height: 75vh;
     box-shadow: 0px 0px 10px #ddd,
         0 0px 60px #ccc;
 }
@@ -409,13 +409,18 @@ h2 {
 }
 
 .top__main {
-    flex-basis: 45%;
+    flex-basis: 25%;
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 0 auto;
     align-items: center;
     padding-top: 45px;
+}
+
+.chart {
+    text-align: center;
+    flex-basis: 10%;
 }
 
 .budget__value {
@@ -528,7 +533,7 @@ h2 {
 /* new styles */
 
 .top__data {
-    flex-basis: 25%;
+    flex-basis: 15%;
 }
 
 .budget__container {
@@ -541,7 +546,7 @@ h2 {
 }
 
 .container {
-    flex-basis: 30%;
+    flex-basis: 28%;
 }
 
 .income .item__delete--btn,
