@@ -75,8 +75,13 @@ body {
     justify-content: space-between;
     overflow: hidden;
     height: 75vh;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1),
-        0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: .4s;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 16px 40px rgba(0, 0, 0, 0.2)
 }
 
 .budget {
@@ -134,10 +139,10 @@ body {
     padding: 20px;
     flex-basis: 20%;
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: -1px;
     background-color: #fff;
-    border-radius: 25px;
 }
 
 .add__container {
@@ -149,7 +154,7 @@ body {
 
 .add__type {
     width: 55px;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #ccc;
     height: 44px;
     font-size: 18px;
     color: inherit;
@@ -160,7 +165,7 @@ body {
 
 .add__description,
 .add__value {
-    border: 1px solid #e7e7e7;
+    border: 1px solid #ccc;
     background-color: #fff;
     color: inherit;
     font-family: inherit;
@@ -279,6 +284,10 @@ h2 {
 
 .item__delete {
     float: left;
+}
+
+.item__edit {
+    margin-left: 5px;
 }
 
 .item__delete--btn,
@@ -460,76 +469,6 @@ h2 {
     font-family: medium;
 }
 
-
-@media screen and (min-device-width: 300px) and (max-device-width: 600px) {
-
-    .top {
-        height: 40vh;
-    }
-
-    .top__main {
-        padding-top: 110px;
-    }
-
-    .bottom {
-        height: 62vh;
-        border-radius: 30px 30px 0 0;
-    }
-
-    .budget__title {
-        font-size: 32px;
-        margin-bottom: 15px;
-    }
-
-    .budget__value {
-        font-size: 70px;
-    }
-
-    .budget__income,
-    .budget__expenses {
-        width: 210px;
-    }
-
-    .budget__income--text,
-    .budget__expenses--text {
-        font-size: 20px;
-    }
-
-    .budget__income--value,
-    .budget__expenses--value {
-        font-size: 25px
-    }
-
-    .income__title,
-    .expenses__title {
-        font-size: 35px;
-    }
-
-    .add__description,
-    .add__value {
-        font-size: 20px;
-    }
-
-    .add__btn {
-        font-size: 40px;
-    }
-
-    .container {
-        padding: 5%;
-        width: auto;
-        justify-content: center;
-    }
-
-    .income {
-        flex-basis: 45%;
-        margin-right: 5%;
-    }
-
-    .expenses {
-        flex-basis: 45%;
-    }
-}
-
 /* new styles */
 
 .top__data {
@@ -605,6 +544,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .top__design--element {
@@ -613,3 +553,212 @@ h2 {
     height: 5px;
     background: #E8ECF1;
 }
+
+@media screen and (min-device-width: 600px) and (max-device-width: 1100px) {
+    .budget__container {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .top {
+        order: -1;
+        flex-basis: 100%;
+        height: 60vh;
+    }
+
+    .add {
+        flex-basis: 16%;
+    }
+
+    .container {
+        flex-basis: 45%;
+        margin-top: 35px;
+    }
+}
+
+
+@media screen and (min-device-width: 0px) and (max-device-width: 600px) {
+
+    .budget__container {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .top {
+        order: -1;
+        flex-basis: 100%;
+        height: 50vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .container {
+        flex-basis: 47.5%;
+        margin-top: 35px;
+        padding: 15px;
+    }
+
+    .add {
+        flex-basis: 14%;
+        border-radius: 0;
+    }
+
+    .add__container {
+        width: 85%;
+        height: 90%;
+    }
+
+    .add__type {
+        width: 8%;
+        height: 100%;
+    }
+
+    .add__description {
+        width: 55%;
+        font-size: 20px;
+    }
+
+    .add__value {
+        width: 18%;
+        font-size: 20px;
+    }
+
+    .add__bth {
+        width: 7%;
+    }
+
+    .top__main {
+        flex-basis: 25%;
+    }
+
+    .top__design {
+        display: none;
+    }
+
+    .budget__title--month {
+        font-size: 21px;
+    }
+
+    .budget__value {
+        margin-bottom: 0;
+        font-size: 62px;
+    }
+
+    .chart {
+        flex-basis: 28%;
+    }
+
+    .chart canvas {
+        width: 230px !important;
+    }
+
+    .top__data {
+        flex-basis: 22%;
+    }
+
+    .budget__income,
+    .budget__expenses {
+        width: 250px;
+        height: 110px;
+    }
+
+    .budget__income--text,
+    .budget__expenses--text {
+        font-size: 24px;
+    }
+
+    .budget__income--value,
+    .budget__expenses--value {
+        font-size: 35px;
+        line-height: 1.6;
+    }
+
+    .budget__expenses--percentage {
+        font-size: 16px;
+    }
+
+    .item {
+        padding: 18px;
+    }
+
+    .item__content {
+        font-size: 22px;
+    }
+
+    .item__date {
+        font-size: 16px;
+    }
+}
+
+
+/* @media screen and (min-device-width: 300px) and (max-device-width: 600px) {
+
+    .top {
+        height: 40vh;
+    }
+
+    .top__main {
+        padding-top: 110px;
+    }
+
+    .bottom {
+        height: 62vh;
+        border-radius: 30px 30px 0 0;
+    }
+
+    .budget__title {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .budget__value {
+        font-size: 70px;
+    }
+
+    .budget__income,
+    .budget__expenses {
+        width: 210px;
+    }
+
+    .budget__income--text,
+    .budget__expenses--text {
+        font-size: 20px;
+    }
+
+    .budget__income--value,
+    .budget__expenses--value {
+        font-size: 25px
+    }
+
+    .income__title,
+    .expenses__title {
+        font-size: 35px;
+    }
+
+    .add__description,
+    .add__value {
+        font-size: 20px;
+    }
+
+    .add__btn {
+        font-size: 40px;
+    }
+
+    .container {
+        padding: 5%;
+        width: auto;
+        justify-content: center;
+    }
+
+    .income {
+        flex-basis: 45%;
+        margin-right: 5%;
+    }
+
+    .expenses {
+        flex-basis: 45%;
+    }
+} */
