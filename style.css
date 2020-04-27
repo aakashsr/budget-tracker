@@ -231,21 +231,12 @@ h2 {
 }
 
 .item {
-    padding: 15px;
-    /* border-bottom: 1px solid #e7e7e7; */
+    padding: 17px;
     background: #fff;
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.01),
         0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.item:first-child {
-    /* border-top: 1px solid #e7e7e7; */
-}
-
-.item:nth-child(even) {
-    /* background-color: #f7f7f7; */
 }
 
 .item__description {
@@ -391,9 +382,10 @@ h2 {
 
 .income__title,
 .expenses__title {
-    font-family: medium;
-    font-size: 20px;
+    font-family: bold;
+    font-size: 24px;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .budget__income--text,
