@@ -63,7 +63,7 @@ body {
 **********************************************/
 
 .top {
-    background: linear-gradient(rgba(0, 0, 0, .99), rgba(0, 0, 0, .99)), url(/bgimage.png);
+    background: linear-gradient(rgba(0, 0, 0, .99), rgba(0, 0, 0, .99)), url(bgimage.png);
     background-blend-mode: soft-light;
     background-size: contain;
     background-position: bottom;
