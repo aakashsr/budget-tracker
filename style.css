@@ -44,7 +44,7 @@ body {
     font-family: regular;
     font-size: 16px;
     position: relative;
-    /* height: 100vh; */
+    min-height: 100vh;
     font-weight: 400;
     /* background: #f7f7f7; */
     background: #F2F6FC;
@@ -589,6 +589,17 @@ h2 {
         flex-basis: 45%;
         margin-top: 35px;
     }
+
+    .delete__all {
+        font-family: medium;
+        font-size: 10px;
+        border: none;
+        padding: 7px 10px;
+        border-radius: 3px;
+        bottom: 5.5%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 
@@ -868,16 +879,4 @@ h2 {
         text-align: center;
         letter-spacing: 1px;
     }
-
-    .delete__all {
-        right: 1.5%;
-        font-family: medium;
-        font-size: 10px;
-        border: none;
-        padding: 7px 10px;
-        border-radius: 3px;
-        bottom: 5%;
-    }
-
-
 }
