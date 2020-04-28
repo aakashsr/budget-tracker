@@ -44,7 +44,7 @@ body {
     font-family: regular;
     font-size: 16px;
     position: relative;
-    height: 100vh;
+    /* height: 100vh; */
     font-weight: 400;
     /* background: #f7f7f7; */
     background: #F2F6FC;
@@ -418,13 +418,13 @@ h2 {
 }
 
 .top__main {
-    flex-basis: 25%;
+    flex-basis: 20%;
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 0 auto;
     align-items: center;
-    padding-top: 45px;
+    padding-top: 60px;
 }
 
 .chart {
@@ -461,7 +461,7 @@ h2 {
     width: 190px;
     background: none;
     padding: 12px;
-    height: 80px;
+    height: 75px;
 }
 
 .item__description,
@@ -502,7 +502,7 @@ h2 {
 .item__delete--btn,
 .item__edit--btn {
     font-size: 22px;
-    background: none;
+    background-color: transparent;
     border: none;
     cursor: pointer;
     display: inline-block;
@@ -554,7 +554,21 @@ h2 {
     background: #E8ECF1;
 }
 
-@media screen and (min-device-width: 600px) and (max-device-width: 1100px) {
+.delete__all {
+    font-family: bold;
+    position: fixed;
+    background-color: #FF5049;
+    bottom: 13%;
+    color: #fff;
+    right: 3%;
+    font-size: 16px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    outline: none;
+}
+
+@media screen and (max-width: 1100px) {
     .budget__container {
         width: 90%;
         flex-wrap: wrap;
@@ -578,12 +592,10 @@ h2 {
 }
 
 
-@media screen and (min-device-width: 0px) and (max-device-width: 600px) {
+@media screen and (max-width: 600px) {
 
     .budget__container {
         width: 100%;
-        flex-wrap: wrap;
-        justify-content: space-between;
         padding: 0;
     }
 
@@ -691,74 +703,181 @@ h2 {
     .item__date {
         font-size: 16px;
     }
-}
-
-
-/* @media screen and (min-device-width: 300px) and (max-device-width: 600px) {
-
-    .top {
-        height: 40vh;
-    }
-
-    .top__main {
-        padding-top: 110px;
-    }
-
-    .bottom {
-        height: 62vh;
-        border-radius: 30px 30px 0 0;
-    }
 
     .budget__title {
-        font-size: 32px;
-        margin-bottom: 15px;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 300;
+    }
+
+    .budget__title--month {
+        font-size: 14px;
     }
 
     .budget__value {
-        font-size: 70px;
+        margin-bottom: 0;
+        font-size: 30px;
+    }
+
+    .chart {
+        display: none;
+    }
+
+    .top {
+        height: 60vh;
+    }
+
+    .top__main {
+        flex-basis: 10%;
+        padding-top: 65px;
+        /* flex-basis: 30%;
+        padding-top: 0; */
+    }
+
+    .top__data {
+        padding-top: 40px;
+        flex-basis: 50%;
+        /* flex-basis: 60%;
+        padding-top: 35%; */
+    }
+
+    .budget__data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%
     }
 
     .budget__income,
     .budget__expenses {
         width: 210px;
+        height: 46px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0;
+        border: 1px solid #c6c6c6;
+        padding: 0 0 0 8px;
     }
 
     .budget__income--text,
     .budget__expenses--text {
-        font-size: 20px;
+        font-size: 14px;
+        margin-right: 10px;
     }
 
     .budget__income--value,
     .budget__expenses--value {
-        font-size: 25px
+        font-family: medium;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .budget__expenses--percentage {
+        font-size: 10px;
+        width: 26px;
+        padding: 3px 0;
+        margin-left: 2px;
+    }
+
+    .add {
+        flex-basis: 17%;
+        padding: 5px
+    }
+
+    .add__container {
+        width: 95%;
+        height: 48%;
+    }
+
+    .add__type {
+        width: 10%;
+        height: 100%;
+    }
+
+    .add__description {
+        width: 55%;
+        font-size: 14px;
+    }
+
+    .add__value {
+        width: 20%;
+        font-size: 14px;
+    }
+
+    .add__btn {
+        font-size: 25px;
+        width: 7%;
+    }
+
+    .container:first-child {
+        padding: 0 0 0 6px;
+    }
+
+    .container:last-child {
+        padding: 0 6px 0 0;
+    }
+
+    .income,
+    .expenses__title {
+        width: 100%;
+    }
+
+    .container {
+        flex-basis: 49.5%;
+        margin-top: 35px;
+
     }
 
     .income__title,
     .expenses__title {
-        font-size: 35px;
+        font-family: medium;
+        font-size: 16px;
     }
 
-    .add__description,
-    .add__value {
-        font-size: 20px;
+    .item {
+        padding: 8px;
+        margin-bottom: 10px;
     }
 
-    .add__btn {
-        font-size: 40px;
+    .item__content {
+        font-size: 14px;
+        margin-bottom: 4px;
+        line-height: 1.2;
     }
 
-    .container {
-        padding: 5%;
-        width: auto;
-        justify-content: center;
+    .item__percentage {
+        width: 30px;
+        padding: 0;
+        font-size: 11px;
+        margin-left: 2px;
     }
 
-    .income {
-        flex-basis: 45%;
-        margin-right: 5%;
+    .item__data {
+        font-size: 11px;
     }
 
-    .expenses {
-        flex-basis: 45%;
+    .income__title,
+    .expenses__title {
+        font-family: medium;
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: 1px;
     }
-} */
+
+    .delete__all {
+        right: 1.5%;
+        font-family: medium;
+        font-size: 10px;
+        border: none;
+        padding: 7px 10px;
+        border-radius: 3px;
+        bottom: 5%;
+    }
+
+
+}

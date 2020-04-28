@@ -145,6 +145,31 @@ var budgetController = (function () {
       data.percentage = storedData.percentage;
     },
 
+    getAllIDs: function () {
+      var incIDs, expIDs, allIDs;
+
+      expIDs = data.allItems.exp.map(function (cur) {
+        return `exp-${cur.id}`;
+      });
+
+      incIDs = data.allItems.inc.map(function (cur) {
+        return `inc-${cur.id}`;
+      });
+
+      allIDs = expIDs.concat(incIDs);
+
+      return allIDs;
+    },
+
+    deleteAllItems: function () {
+      data.allItems.exp = [];
+      data.allItems.inc = [];
+    },
+
+    deleteDataFromStorage: function () {
+      localStorage.clear();
+    },
+
     testing: function () {
       console.log(data);
     },
@@ -366,6 +391,10 @@ var controller = (function (budgetCtrl, UICtrl) {
     document
       .querySelector(".budget__container")
       .addEventListener("click", ctrlEditOrDeleteItem);
+
+    document
+      .querySelector(".delete__all")
+      .addEventListener("click", ctrlDeleteAllItems);
   };
 
   var loadData = function () {
@@ -505,6 +534,27 @@ var controller = (function (budgetCtrl, UICtrl) {
       // 5. save to localstorage
       budgetCtrl.storeData();
     }
+  };
+
+  ctrlDeleteAllItems = function () {
+    var allIDs;
+
+    // 1. Get all IDs
+    allIDs = budgetCtrl.getAllIDs();
+
+    // 2. delete the items from UI
+    allIDs.forEach(function (cur) {
+      UICtrl.deleteListItem(cur);
+    });
+
+    // 3. Delete all items in DS
+    budgetCtrl.deleteAllItems();
+
+    // 4. Calculate and update percentage
+    updatePercentages();
+
+    //6. delete local storage
+    budgetCtrl.deleteDataFromStorage();
   };
 
   return {
