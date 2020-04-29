@@ -23,8 +23,6 @@ var budgetController = (function () {
     (this.id = id), (this.description = description), (this.value = value);
   };
 
-  // localStorage.clear();
-
   var data = {
     allItems: {
       exp: [],
@@ -44,7 +42,6 @@ var budgetController = (function () {
       sum += cur.value;
     });
     // Storing sum into global data structure
-
     data.totals[type] = sum;
   };
 
@@ -129,7 +126,6 @@ var budgetController = (function () {
     // Setting data into local storage
     storeData: function () {
       localStorage.setItem("data", JSON.stringify(data));
-      console.log("i'm store data");
     },
 
     // Getting data from local storage
@@ -400,7 +396,6 @@ var controller = (function (budgetCtrl, UICtrl) {
   var loadData = function () {
     // 1. Loca data from local storage
     var storedData = budgetCtrl.getStoredData();
-    console.log(storedData);
 
     if (storedData) {
       // 2. insert the saved data into local storage
@@ -448,7 +443,6 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     // 3. Update the ui with the new percentages.
     UICtrl.displayPercentage(percentages);
-    console.log("i'm updateper");
   };
 
   var ctrlAddItem = function () {
@@ -515,7 +509,6 @@ var controller = (function (budgetCtrl, UICtrl) {
     if (itemID) {
       splitID = itemID.split("-");
       type = splitID[0];
-      console.log(type);
       ID = parseInt(splitID[1]);
       console.log(ID);
 
@@ -550,7 +543,10 @@ var controller = (function (budgetCtrl, UICtrl) {
     // 3. Delete all items in DS
     budgetCtrl.deleteAllItems();
 
-    // 4. Calculate and update percentage
+    // 4. update and show the new budget
+    updateBudget();
+
+    // 5. Calculate and update percentage
     updatePercentages();
 
     //6. delete local storage
@@ -559,7 +555,6 @@ var controller = (function (budgetCtrl, UICtrl) {
 
   return {
     init: function () {
-      console.log("app started");
       UICtrl.displayMonth();
       UICtrl.displayBudget({
         totalInc: 0,
@@ -578,7 +573,6 @@ controller.init();
 var chart = document.querySelector(".chart");
 
 // Crating canvas element
-
 const canvas = document.createElement("canvas");
 
 canvas.width = 150;
