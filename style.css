@@ -624,7 +624,6 @@ h2 {
     }
 
     .add {
-        flex-basis: 14%;
         border-radius: 0;
     }
 
@@ -652,10 +651,6 @@ h2 {
         width: 7%;
     }
 
-    .top__main {
-        flex-basis: 25%;
-    }
-
     .top__design {
         display: none;
     }
@@ -675,10 +670,6 @@ h2 {
 
     .chart canvas {
         width: 230px !important;
-    }
-
-    .top__data {
-        flex-basis: 22%;
     }
 
     .budget__income,
@@ -739,12 +730,11 @@ h2 {
     }
 
     .top__main {
-        flex-basis: 10%;
-        padding-top: 65px;
+        flex-basis: 35%;
+        padding-top: 0;
     }
 
     .top__data {
-        padding-top: 40px;
         flex-basis: 45%;
     }
 
@@ -791,7 +781,7 @@ h2 {
     }
 
     .add {
-        flex-basis: 22%;
+        flex-basis: 20%;
         padding: 5px
     }
 
