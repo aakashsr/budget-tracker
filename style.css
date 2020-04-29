@@ -735,21 +735,17 @@ h2 {
     }
 
     .top {
-        height: 60vh;
+        height: 55vh;
     }
 
     .top__main {
         flex-basis: 10%;
         padding-top: 65px;
-        /* flex-basis: 30%;
-        padding-top: 0; */
     }
 
     .top__data {
         padding-top: 40px;
-        flex-basis: 50%;
-        /* flex-basis: 60%;
-        padding-top: 35%; */
+        flex-basis: 45%;
     }
 
     .budget__data {
@@ -763,7 +759,7 @@ h2 {
     .budget__income,
     .budget__expenses {
         width: 210px;
-        height: 46px;
+        height: 40px;
         margin-bottom: 15px;
         display: flex;
         flex-direction: row;
@@ -795,7 +791,7 @@ h2 {
     }
 
     .add {
-        flex-basis: 17%;
+        flex-basis: 22%;
         padding: 5px
     }
 
