@@ -107,7 +107,6 @@ var budgetController = (function () {
       var index = ids.indexOf(ID);
       if (index !== -1) {
         data.allItems[type].splice(index, 1);
-        console.log("deleted");
       }
 
       // update chart
@@ -431,7 +430,6 @@ var controller = (function (budgetCtrl, UICtrl) {
 
     // 3. Display the budget on the UI
     UICtrl.displayBudget(budget);
-    console.log("i'm update budget");
   };
 
   var updatePercentages = function () {
@@ -491,27 +489,44 @@ var controller = (function (budgetCtrl, UICtrl) {
         inputVal,
         valueString,
         splitValuesString,
-        intValue;
+        intValue,
+        selectTypeElement,
+        selectType;
+
+      // traversing to description element of item
       desc = event.target.parentNode.parentNode.previousElementSibling;
+      // traversing to value element of item
       value = event.target.parentNode.parentNode.firstElementChild;
+      // selecting input description element
       inputDesc = document.querySelector(".add__description");
+      // selecting input value element
       inputVal = document.querySelector(".add__value");
+      // assigning item's description value to input's description element
       inputDesc.value = desc.textContent;
+      // assigning item's value value(actual content) to input's value
       valueString = value.textContent;
+      // splitting values to deal with comma in value having 4 or more digits
       splitValuesString = valueString.split(",");
       intValue = parseInt(splitValuesString[0] + splitValuesString[1]);
       inputVal.value = Math.abs(intValue);
+
+      // Handling type
+      selectType = document.querySelector(".add__type");
+      selectTypeElement =
+        event.target.parentNode.parentNode.parentNode.parentNode.id;
+      if (selectTypeElement.includes("inc")) {
+        selectType.value = "inc";
+      } else if (selectTypeElement.includes("exp")) {
+        selectType.value = "exp";
+      }
     }
 
     itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-    console.log(itemID);
 
     if (itemID) {
       splitID = itemID.split("-");
       type = splitID[0];
       ID = parseInt(splitID[1]);
-      console.log(ID);
-
       // 1. Delete the item from the data structure
       budgetCtrl.controlDelete(type, ID);
 
