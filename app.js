@@ -510,14 +510,17 @@ var controller = (function (budgetCtrl, UICtrl) {
       intValue = parseInt(splitValuesString[0] + splitValuesString[1]);
       inputVal.value = Math.abs(intValue);
 
-      // Handling type
+      // Handling type input fields focus color
+
       selectType = document.querySelector(".add__type");
       selectTypeElement =
         event.target.parentNode.parentNode.parentNode.parentNode.id;
       if (selectTypeElement.includes("inc")) {
         selectType.value = "inc";
+        UICtrl.changeType();
       } else if (selectTypeElement.includes("exp")) {
         selectType.value = "exp";
+        UICtrl.changeType();
       }
     }
 
