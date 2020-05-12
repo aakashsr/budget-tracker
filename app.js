@@ -420,12 +420,11 @@ var controller = (function (budgetCtrl, UICtrl) {
       // Display the percentage
       updatePercentages();
 
-      // Update chart
+      // Using saved inc and exp data to show chart
       updateChart(
         parseInt(storedData.totals.inc),
         parseInt(storedData.totals.exp)
       );
-      console.log(storedData.totals.inc, storedData.totals.exp);
     }
   };
 
