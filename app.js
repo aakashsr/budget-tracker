@@ -77,7 +77,7 @@ var budgetController = (function () {
       // Calculate budget : income - expenses
       data.budget = data.totals.inc - data.totals.exp;
 
-      // Calculte percentage
+      // calculate percentage
       if (data.totals.inc > 0) {
         data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
       } else {
@@ -283,7 +283,7 @@ var UIController = (function () {
 
       fieldsArray = Array.prototype.slice.call(fields);
 
-      fieldsArray.forEach(function (current, index, array) {
+      fieldsArray.forEach(function (current) {
         current.value = "";
       });
 
@@ -395,6 +395,7 @@ var controller = (function (budgetCtrl, UICtrl) {
   var loadData = function () {
     // 1. Loca data from local storage
     var storedData = budgetCtrl.getStoredData();
+    console.log(storedData);
 
     if (storedData) {
       // 2. insert the saved data into local storage
@@ -418,6 +419,13 @@ var controller = (function (budgetCtrl, UICtrl) {
 
       // Display the percentage
       updatePercentages();
+
+      // Update chart
+      updateChart(
+        parseInt(storedData.totals.inc),
+        parseInt(storedData.totals.exp)
+      );
+      console.log(storedData.totals.inc, storedData.totals.exp);
     }
   };
 
@@ -587,49 +595,3 @@ var controller = (function (budgetCtrl, UICtrl) {
 })(budgetController, UIController);
 
 controller.init();
-
-var chart = document.querySelector(".chart");
-
-// Crating canvas element
-const canvas = document.createElement("canvas");
-
-canvas.width = 150;
-canvas.height = 150;
-
-// Append canvas to chart element
-
-chart.appendChild(canvas);
-
-// to draw our canvas ,we need to get context of canvas
-const ctx = canvas.getContext("2d");
-
-// change line width
-
-ctx.lineWidth = 16;
-
-// circle radius
-
-const R = 60;
-
-function drawCircle(color, ratio, anticlockwise) {
-  ctx.strokeStyle = color;
-  ctx.beginPath();
-  ctx.arc(
-    canvas.width / 2,
-    canvas.height / 2,
-    R,
-    0,
-    ratio * 2 * Math.PI,
-    anticlockwise
-  );
-  ctx.stroke();
-}
-
-function updateChart(income, expense) {
-  let ratio = income / (income + expense);
-
-  drawCircle("#28B9B5", -ratio, true);
-  drawCircle("#e66767", 1 - ratio, false);
-}
-
-updateChart(0, 0);
